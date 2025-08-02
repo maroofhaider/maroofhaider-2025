@@ -1,0 +1,92 @@
+@use "globals" as *
+
+*, *:before, *:after
+	box-sizing: border-box
+*
+	outline: none
+a
+	color: inherit
+	text-decoration: none 
+
+html
+	scroll-behavior: smooth
+	
+
+body, html
+	font-size: 62.5%
+	height: 100%
+
+body
+	font-size: $font-size
+	background-color: #fff
+	font-family: $font-base
+	letter-spacing: -.5px
+	font-weight: 400
+	margin: 0
+	color: $clr-dayMode
+	-webkit-font-smoothing: antialiased
+	overflow-x: hidden
+	&::-webkit-scrollbar
+		width: 8px
+	
+	&::-webkit-scrollbar-track
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	
+	&::-webkit-scrollbar-thumb
+		background-color: #333
+		outline: 0
+
+	.main-layout
+		visibility: hidden
+		header, .splash
+			display: none
+
+	&.visible
+		.page-loader
+			animation: .2s fadeOut
+			opacity: 0
+			z-index: -1
+			pointer-events: none
+		.main-layout
+			visibility: visible
+			animation: .2s fadeIn
+			header
+				display: block
+			.splash
+				display: flex	
+	&.noScroll
+		overflow: hidden 
+.wrapper
+	position: relative
+	padding: $gutter
+
+/* For main media query container set width */
+.mq-container
+	margin: 0 auto
+	position: relative
+	width: $wrapperWidth
+
+	@include MQ(sm)
+		width: 92%
+	@include MQ(md)
+		width: $wrapperWidth - 680px
+	@include MQ(lg)
+		width: $wrapperWidth - 440px
+	@include MQ(xl)
+		width: $wrapperWidth - 230px
+	@include MQ(xxl)
+		width: $wrapperWidth
+	@include MQ(xxxl)
+		width: 75%	
+
+/*for lenis scroll-behavior*/
+html.lenis
+	height: auto
+.lenis.lenis-smooth
+	scroll-behavior: auto !important
+.lenis.lenis-smooth [data-lenis-prevent]
+	overscroll-behavior: contain
+.lenis.lenis-stopped
+	overflow: hidden
+.lenis.lenis-scrolling iframe
+	pointer-events: none

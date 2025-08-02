@@ -1,0 +1,73 @@
+@keyframes fadeIn 
+	0% 
+		opacity: 0
+
+	to 
+		opacity: 1
+
+@keyframes fadeInDown 
+	0%
+		opacity: 0
+		-webkit-transform: translate3d(0, -100%, 0)
+		transform: translate3d(0, -100%, 0)
+
+	to 
+		opacity: 1
+		-webkit-transform: translateZ(0)
+		transform: translateZ(0)
+ 
+@keyframes fadeInUp 
+	0% 
+		opacity: 0
+		-webkit-transform: translate3d(0, 100%, 0)
+		transform: translate3d(0, 100%, 0)
+
+	to 
+		opacity: 1
+		-webkit-transform: translateZ(0)
+		transform: translateZ(0)
+
+
+@keyframes bounceInUp
+	0%, 60%, 75%, 90%, to 
+		-webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+		animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+	
+	0%
+		opacity: 0
+		-webkit-transform: translate3d(0, 3000px, 0) scaleY(5)
+		transform: translate3d(0, 3000px, 0) scaleY(5)
+	
+	60%
+		opacity: 1
+		-webkit-transform: translate3d(0, -20px, 0) scaleY(.9)
+		transform: translate3d(0, -20px, 0) scaleY(.9)
+	
+	75%
+		-webkit-transform: translate3d(0, 10px, 0) scaleY(.95)
+		transform: translate3d(0, 10px, 0) scaleY(.95)
+	
+	90%
+		-webkit-transform: translate3d(0, -5px, 0) scaleY(.985)
+		transform: translate3d(0, -5px, 0) scaleY(.985)
+	
+	to
+		-webkit-transform: translateZ(0)
+		transform: translateZ(0)
+	
+@keyframes zoomIn
+	0%
+		opacity: 0
+		transform: scale3d(.3,.3,.3)
+	50%
+		opacity: 1
+
+// Define a mixin for the rotation animation
+@mixin rotate-animation($name, $duration, $iteration) 
+	@keyframes #{$name} 
+		from 
+			transform: rotate(0deg)
+		to 
+			transform: rotate(360deg)
+	animation: #{$name} $duration linear $iteration
+

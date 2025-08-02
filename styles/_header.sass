@@ -1,0 +1,305 @@
+@use "globals" as *
+
+header
+	position: absolute
+	color: $clr-dark
+	padding: 30px 0
+	left: 0
+	top: 0
+	right: 0
+	z-index: 10
+	opacity: 1
+	animation: .6s slideInDown
+	@include MQ(sm)
+		padding:  15px 0
+		animation: .4s fadeInDown
+		position: fixed
+		background-color: $clr-dark
+		box-shadow: 0 1px 0 rgba(#000, .2)
+	.logo
+		max-width: 260px
+		display: flex
+		align-content: center
+		@include MQ(sm)
+			max-width: 220px
+		@include MQ(lg)
+			max-width: 200px
+		@include MQ(xl)
+			max-width: 260px		
+
+		img
+			width: 100%
+
+	.navi
+		display: flex
+		font-size: 18px  
+		align-items: center
+		gap: 36px 
+		font-weight: 500
+		text-transform: uppercase
+		@include MQ(lmd)
+			display: none
+		@include MQ(lg)
+			gap: 24px
+			font-size: 12px  
+		@include MQ(xl)
+			gap: 30px
+			font-size: 15px  
+		@include MQ(xxl)
+			font-size: 18px  
+
+		a
+			transition: .2s ease-in
+			display: inline-flex
+			gap: 10px
+			color: #fff
+			&:hover
+				color: $clr-cta
+	.cta
+		gap: 5px
+		margin-left: 30px
+			 
+	
+	&.s-t-i-c-k-y
+		padding:  10px 0
+		animation: .4s fadeInDown
+		position: fixed
+		background-color: $clr-dark
+		
+		z-index: 10
+		
+		.logo
+			max-width: 210px
+		.cta
+			height: 42px    
+.menu-left, .right-cta-container
+	display: flex
+	align-items: center
+	
+.menu-left
+	@include MQ(sm)
+		width: 100vw
+		justify-content: center
+
+.right-cta-container
+	@include MQ(sm)
+		display: none	
+
+/*Mobile Hamburger and Drawer*/
+.menu-icon  
+	margin-left: -8px	
+	@include MQ(lg)
+		display: none
+	@include MQ(sm)
+		position: absolute
+		left: 0
+	&~.logo
+		margin-left: 15px
+
+.drawer-hamburger 
+	width: 48px
+	height: 40px
+	position: relative
+	transform: rotate(0deg)
+	transition: .5s ease-in-out
+	cursor: pointer
+	display: block   
+
+.drawer-hamburger 
+	span
+		display: block  
+		position: absolute  
+		height: 2px  
+		background-color: $clr-nightMode 
+		border-radius: 9px  
+		opacity: 1  
+		left: 12px  
+		right: 12px 
+		transform: rotate(0deg)
+		transition: .25s ease-in-out 
+
+.drawer-hamburger 
+	span:nth-child(1)  
+		top: 8px  
+		transform-origin: left center 
+
+.drawer-hamburger 
+	span:nth-child(2)   
+		top: 18px  
+		transform-origin: left center 
+
+.drawer-hamburger 
+	span:nth-child(3)   
+		top: 28px  
+		transform-origin: left center 
+
+.drawer-toggle
+	position: absolute
+	width: 50px
+	height: 50px
+	z-index: 1 
+	opacity: 0
+
+.menu-icon.open .drawer-hamburger 
+	span:nth-child(1)  
+		transform: rotate(45deg)  
+		top: 9px  
+		left: 12px 
+
+.menu-icon.open .drawer-hamburger 
+	span:nth-child(2)  
+		width: 0%  
+		opacity: 0 
+
+.menu-icon.open .drawer-hamburger 
+	span:nth-child(3)  
+		transform: rotate(-45deg)  
+		top: 26px  
+		left: 12px 			
+
+.menu-slide
+	background-color: $clr-dayMode
+	position: fixed 
+	inset: 0
+	z-index: 9
+	height: 100%
+	overflow: hidden
+	overflow-y: auto
+	color: $clr-nightMode
+	display: none
+	opacity: 0
+	pointer-events: none
+	transition: .2s ease
+
+	&.show-menu  
+		width: 100% 
+		pointer-events: all
+		display: block
+		opacity: 1
+		animation: .4s fadeInUp
+	
+	.mq-container   
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+		height: 100%
+		min-height: 670px
+	
+	ul 
+		list-style: none
+		padding: 0
+		display: flex
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin-top: 12%
+		margin-bottom: 30px
+		@include MQ(lmd)
+			margin-top: 60px
+			margin-bottom: 15px
+			align-items: center
+			flex-direction: column
+		
+	li
+		position: relative
+		padding-left: 44px
+		padding-right: 30px
+		@include MQ(lmd)
+			margin: 5px 0
+			padding: 0
+		
+		a 
+			font-weight: 700
+			font-size: 3rem
+			text-decoration: none
+			font-family: $font-Head
+			text-transform: uppercase
+			display: block
+			padding: 0
+			position: relative
+			z-index: 1
+			transition: .3s ease-in-out
+			@include MQ(md)
+				font-size: 7rem 
+
+			&:hover, &.selected 
+				color: $clr-cta
+
+		
+	.contact-info 
+		min-width: 315px
+		display: flex
+		justify-content: space-between
+		color: $clr-nightMode
+		
+		@include MQ(sm)
+			flex-direction: column
+			align-items: center
+			text-align: center
+		@include MQ(omd)
+			gap: 50px
+
+		> div  
+			margin-right: 40px
+			@include MQ(omd)
+				margin-right: 20px
+			@include MQ(sm)
+				margin-bottom: 20px
+				margin-right: 0		
+
+		a 
+			position: relative
+			font-weight: 500
+			
+			&:before 
+				content: ""
+				position: absolute 
+				left: 0
+				right: 0
+				bottom: -4px
+				transform: scaleX(0) 
+				transform-origin: right
+				height: 1px
+				transition: .3s transform ease
+				background-color: $clr-light	
+			
+			&:hover
+				&:before 
+					transform: scaleX(1) 
+					transform-origin: left 	
+		strong  
+			display: block
+			margin-bottom: 10px
+	.social-wrap
+		@include MQ(omd)
+			flex-direction: column
+			align-items: flex-start
+		span 
+			font-weight: 700
+			& + span
+				@include MQ(omd)
+					display: none
+
+.over-lay 
+	background-color: $clr-dark
+	position: fixed 0
+	display: none
+	z-index: 9
+
+.social-rights
+	display: flex
+	align-items: flex-end
+	justify-content: space-between
+	font-size: 1.8rem
+	color: $clr-nightMode
+	@include MQ (omd)
+		strong
+			margin-bottom: 18px
+		font-size: 16px 
+		align-items: flex-start
+	@include MQ (sm) 
+		align-items: center
+		flex-direction: column
+		padding-bottom: 10px
+
+.show-menu ~ .over-lay 
+	display: block
