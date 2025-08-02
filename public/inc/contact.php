@@ -19,6 +19,7 @@
             <div>
                 <h6>Open Working Timing:</h6>
                 <p><img src="./public/assets/images/icon-time-w.svg" alt=""> Works in your local time zone (CST)</p>
+                <!-- a  -->
             </div>
         </aside>
         <div class="contact-content">
